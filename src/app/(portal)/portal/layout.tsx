@@ -1,7 +1,7 @@
 import PageContainer from "@/components/Shared/PageContainer";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import PortalHeader from "@/features/portal/components/PortalHeader";
 import PortalSidebar from "@/features/portal/components/PortalSidebar";
-import ProfileHeader from "@/features/Profile/components/ProfileHeader";
 import { FetchCurrentUserAction } from "@/features/Profile/ProfileActions";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -25,7 +25,7 @@ export default async function PortalLayout({
     <SidebarProvider>
       <PortalSidebar />
       <SidebarInset>
-        <ProfileHeader />
+        <PortalHeader />
         <PageContainer size="large">{children}</PageContainer>
       </SidebarInset>
     </SidebarProvider>

@@ -84,6 +84,7 @@ export async function BanUserAction(
 }
 
 export async function UnbanUserAction(id: string) {
+  await requireAdmin();
   try {
     await auth.api.unbanUser({
       body: {

@@ -29,6 +29,8 @@ export default function TableContainer<TData extends TableRowProps>({
   const defaultColDef: ColDef<TData> = {
     sortable: true,
     filter: true,
+    flex: 1,
+    minWidth: 120,
   };
 
   const myTheme = themeMaterial.withParams({
@@ -37,11 +39,12 @@ export default function TableContainer<TData extends TableRowProps>({
     borderColor: "var(--border)",
     headerBackgroundColor: "var(--muted)",
     borderRadius: "0px",
+    wrapperBorder: true,
   });
 
   return (
     <AgGridProvider modules={modules}>
-      <div className="grid gap-6">
+      <div className="grid min-w-0 gap-6">
         <div className="flex flex-row items-end-end md:w-1/2">
           <TableSearch
             title="Search..."
@@ -49,25 +52,18 @@ export default function TableContainer<TData extends TableRowProps>({
             setSearch={setSearch}
           />
         </div>
-        <div className="w-full overflow-x-auto">
-          <div className="w-175 md:w-full">
-            <AgGridReact<TData>
-              quickFilterText={search}
-              defaultColDef={defaultColDef}
-              theme={myTheme}
-              domLayout="autoHeight"
-              rowData={data}
-              columnDefs={columns}
-              getRowId={(row) => String(row.data.id)}
-              pagination={true}
-              paginationPageSizeSelector={[10, 20, 50, 100]}
-              paginationPageSize={size}
-              autoSizeStrategy={{
-                type: "fitGridWidth",
-              }}
-            />
-          </div>
-        </div>
+        <AgGridReact<TData>
+          quickFilterText={search}
+          defaultColDef={defaultColDef}
+          theme={myTheme}
+          domLayout="autoHeight"
+          rowData={data}
+          columnDefs={columns}
+          getRowId={(row) => String(row.data.id)}
+          pagination={true}
+          paginationPageSizeSelector={[10, 20, 50, 100]}
+          paginationPageSize={size}
+        />
       </div>
     </AgGridProvider>
   );

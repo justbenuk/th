@@ -7,7 +7,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { CastleIcon, User } from "lucide-react";
+import { CastleIcon, LayoutDashboardIcon } from "lucide-react";
 import Link from "next/link";
 import AppMenuList from "./AppMenuList";
 
@@ -33,9 +33,9 @@ export default function PortalSidebar({
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <Link href={"/profile"}>
-                  <User />
-                  <span>Profile</span>
+                <Link href={"/portal"}>
+                  <LayoutDashboardIcon />
+                  <span>Dashboard</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>

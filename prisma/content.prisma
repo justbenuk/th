@@ -1,0 +1,37 @@
+enum ContentType {
+  NEWS
+  BUSINESS
+  JOB
+  EVENT
+  CHARITY
+}
+
+model Category {
+  id          String      @id @default(cuid())
+  name        String
+  slug        String
+  type        ContentType
+  description String?
+
+  parentId String?
+  parent   Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id], onDelete: Restrict)
+  children Category[] @relation("CategoryHierarchy")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([type, slug])
+  @@index([type, parentId])
+}
+
+model Tag {
+  id   String      @id @default(cuid())
+  name String
+  slug String
+  type ContentType
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([type, slug])
+}
