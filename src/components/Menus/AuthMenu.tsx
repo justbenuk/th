@@ -8,7 +8,7 @@ export default function AuthMenu() {
         <Link href={"/login"}>Login</Link>
       </Button>
       <Button asChild variant={"secondary"}>
-        <Link href={"/register"}>Register</Link>
+        <Link href={"/onboarding/register"}>Register</Link>
       </Button>
     </div>
   );

@@ -2,6 +2,7 @@ import { Menu } from "lucide-react";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTitle,
@@ -23,6 +24,7 @@ export default function MobileMenu() {
           <SheetTitle>
             <SiteLogo size="small" />
           </SheetTitle>
+          <SheetDescription></SheetDescription>
         </SheetHeader>
         <nav className="grid gap-2 px-8">
           {MAINMENUITEMS.map((item) => (

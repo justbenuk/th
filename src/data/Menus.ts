@@ -20,3 +20,26 @@ export const MAINMENUITEMS = [
     link: "/jobs",
   },
 ];
+
+export const PROFILEMENUITEMS = [
+  {
+    name: "Profile",
+    link: "/profile",
+  },
+  {
+    name: "Sessions",
+    link: "/profile/sessions",
+  },
+  {
+    name: "Businesses",
+    link: "/profile/businesses",
+  },
+  {
+    name: "Charities",
+    link: "/profile/charities",
+  },
+  {
+    name: "Danger Zone",
+    link: "/profile/danger",
+  },
+];
