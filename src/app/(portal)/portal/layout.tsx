@@ -2,10 +2,10 @@ import PageContainer from "@/components/Shared/PageContainer";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import PortalHeader from "@/features/portal/components/PortalHeader";
 import PortalSidebar from "@/features/portal/components/PortalSidebar";
-import { FetchCurrentUserAction } from "@/features/Profile/ProfileActions";
+import { requireAdmin } from "@/lib/sessions";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { ReactNode } from "react";
+
 export const metadata: Metadata = {
   title: {
     template: "%s | Portal Tamworth Hub",
@@ -17,9 +17,7 @@ export default async function PortalLayout({
 }: {
   children: ReactNode;
 }) {
-  const user = await FetchCurrentUserAction();
-
-  if (!user) return notFound();
+  await requireAdmin();
 
   return (
     <SidebarProvider>

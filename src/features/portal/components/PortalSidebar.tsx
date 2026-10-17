@@ -10,6 +10,7 @@ import {
 import { CastleIcon, LayoutDashboardIcon } from "lucide-react";
 import Link from "next/link";
 import AppMenuList from "./AppMenuList";
+import PortalMenuItems from "./PortalMenuItems";
 
 export default function PortalSidebar({
   ...props
@@ -41,6 +42,7 @@ export default function PortalSidebar({
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroup>
+        <PortalMenuItems />
         <AppMenuList />
       </SidebarContent>
     </Sidebar>
