@@ -52,5 +52,10 @@
     "@prisma/engines@7.10.0": true,
     "esbuild@0.28.2": true,
     "prisma@7.10.0": true
+  },
+  "overrides": {
+    "@effect/platform@0.90.3": {
+      "effect": "3.17.7"
+    }
   }
 }

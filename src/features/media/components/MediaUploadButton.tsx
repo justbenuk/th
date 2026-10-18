@@ -1,11 +1,13 @@
 "use client";
 import { UploadButton } from "@/lib/uploadthing";
+import { useRouter } from "next/navigation";
 
 export default function MediaUploadButton({
   label = "Upload  File",
 }: {
   label?: string;
 }) {
+  const router = useRouter();
   return (
     <UploadButton
       endpoint="mediaUploader"
@@ -21,7 +23,7 @@ export default function MediaUploadButton({
         },
       }}
       onClientUploadComplete={(res) => {
-        console.log("Uploaded:", res);
+        router.refresh();
       }}
       onUploadError={(error) => {
         console.error(error);
