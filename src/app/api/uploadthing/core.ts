@@ -10,6 +10,33 @@ const f = createUploadthing();
 export const utapi = new UTApi();
 
 export const ourFileRouter = {
+  businessImageUploader: f({
+    image: {
+      maxFileSize: "8MB",
+      maxFileCount: 10,
+    },
+  })
+    .middleware(async () => {
+      // Replace with your authentication system.
+      const session = await auth.api.getSession({
+        headers: await headers(),
+      });
+      if (!session?.user) throw new UploadThingError("Unauthorized");
+      return { userId: session.user.id };
+    })
+    .onUploadComplete(async ({ metadata, file }) => {
+      const user = await db.user.findUnique({
+        where: {
+          id: metadata.userId,
+        },
+      });
+
+      if (!user) {
+        throw new UploadThingError("User not found");
+      }
+
+      return { url: file.ufsUrl };
+    }),
   profileUploader: f({
     image: {
       maxFileSize: "8MB",
